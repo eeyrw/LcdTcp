@@ -29,7 +29,7 @@ void Protocol_Process(unsigned char* Buf) {
 	case CMD_LCD_INIT:
 
 		//lcd_init(Buf[1], Buf[2]);
-   lcd_init();
+		lcd_init();
 		Serial.println("Lcd init.");
 
 		break;

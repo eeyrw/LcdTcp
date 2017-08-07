@@ -17,10 +17,15 @@
 
 //end of add your includes here
 
+#define d1printf printf
 
 //add your function definitions for the project wifi here
 
 extern void ParseEventFrameStream(WiFiClient* client);
+extern void TcpServerInit(void);
+extern void TcpServerProc(void);
+extern void WifiConnectionIniit(void);
+extern void LcdInit(void);
 
 
 //Do not add code below this line
