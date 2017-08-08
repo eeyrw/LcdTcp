@@ -28,7 +28,7 @@ void TcpServerProc(void)
 	      if (!serverClients[i] || !serverClients[i].connected()){
 	        if(serverClients[i]) serverClients[i].stop();
 	        serverClients[i] = server.available();
-	        Serial.print("New client: "); Serial.print(i);
+	        Serial.print("New client Id:"); Serial.print(i);Serial.println("");
 	        continue;
 	      }
 	    }

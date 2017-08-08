@@ -30,22 +30,22 @@ void Protocol_Process(unsigned char* Buf) {
 
 		//lcd_init(Buf[1], Buf[2]);
 		lcd_init();
-		Serial.println("Lcd init.");
+		Serial.printf("CMD_LCD_INIT.X=%d,Y=%d\n",Buf[1], Buf[2]);
 
 		break;
 
 	case CMD_LCD_SETBACKLGIHT:
-		Serial.println("CMD_LCD_SETBACKLGIHT.");
+		Serial.printf("CMD_LCD_SETBACKLGIHT.Level=%d\n",Buf[1]);
 
 		break;
 
 	case CMD_LCD_SETCONTRAST:
-		Serial.println("CMD_LCD_SETCONTRAST.");
+		Serial.printf("CMD_LCD_SETCONTRAST.Level=%d\n",Buf[1]);
 
 		break;
 
 	case CMD_LCD_SETBRIGHTNESS:
-		Serial.println("CMD_LCD_SETBRIGHTNESS.");
+		Serial.printf("CMD_LCD_SETCONTRAST.Level=%d\n",Buf[1]);
 
 		break;
 
@@ -61,13 +61,13 @@ void Protocol_Process(unsigned char* Buf) {
 		break;
 
 	case CMD_LCD_SETCURSOR:
-
+		Serial.printf("CMD_LCD_SETCURSOR.X=%d,Y=%d\n",Buf[1], Buf[2]);
 		set_cursor(Buf[1], Buf[2]);
 
 		break;
 
 	case CMD_LCD_CUSTOMCHAR:
-
+		Serial.println("CMD_LCD_CUSTOMCHAR.");
 //		if (Is_Daul) {
 //			CurrentPanel = 1;
 //			lcd_write_cmd(0x40 | 8 * Buf[1]);
