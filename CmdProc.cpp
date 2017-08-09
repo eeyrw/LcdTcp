@@ -16,11 +16,13 @@ typedef enum _EVENT_FRAME_PARSER_STATUS {
 	FRAME_PARSER_STATUS_IDLE = 0,
 	FRAME_PARSER_STATUS_SOF_LO,
 	FRAME_PARSER_STATUS_SOF_HI,
-	FRAME_PARSER_STATUS_SOF_SYS_LO,
-	FRAME_PARSER_STATUS_SOF_SYS_HI,
+	FRAME_PARSER_STATUS_RECV_CMD_LEN,
+
 } EVENT_FRAME_PARSER_STATUS;
 
 EVENT_FRAME_PARSER_STATUS frameParseStatus;
+
+uint8_t cmdBuf[256];
 
 void Protocol_Process(unsigned char* Buf) {
 	unsigned int i;
@@ -97,6 +99,7 @@ void Protocol_Process(unsigned char* Buf) {
 
 void ParseEventFrameStream(WiFiClient* client) {
 	uint8_t streamByte;
+	static uint8_t cmdLen=0;
 
 	switch (frameParseStatus) {
 	case FRAME_PARSER_STATUS_IDLE: {
@@ -118,11 +121,20 @@ void ParseEventFrameStream(WiFiClient* client) {
 	}
 		break;
 	case FRAME_PARSER_STATUS_SOF_HI: {
-		uint8_t buf[62];
-		if (client->available() >= 62) {
-			client->read(buf, sizeof(buf));
-			Protocol_Process(buf);
+		if (client->available()) {
+			streamByte = client->read();
+				cmdLen=streamByte;
+				frameParseStatus = FRAME_PARSER_STATUS_RECV_CMD_LEN;
+		}
+	}
+		break;
+
+	case FRAME_PARSER_STATUS_RECV_CMD_LEN: {
+		if (client->available() >= cmdLen) {
+			client->read(cmdBuf, cmdLen);
+			Protocol_Process(cmdBuf);
 			frameParseStatus = FRAME_PARSER_STATUS_IDLE;
+			cmdLen=0;
 		}
 	}
 		break;
