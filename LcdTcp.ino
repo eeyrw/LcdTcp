@@ -12,10 +12,10 @@ void setup() {
    }
    Serial.println("mDNS responder started");
    MDNS.addService("esp", "tcp", 2400); // Announce esp tcp service on port 2400
-  TcpServerInit();
+  UdpServerInit();
 
 }
 
 void loop() {
- TcpServerProc();
+ UdpServerProc();
 }

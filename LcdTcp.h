@@ -15,6 +15,7 @@
 #include <Wire.h>
 #include "LCD_I2C.h"
 #include "LiquidCrystal_I2C.h"
+#include <CircularBuffer.h>
 
 
 //end of add your includes here
@@ -23,9 +24,9 @@
 
 //add your function definitions for the project wifi here
 
-extern void ParseEventFrameStream(WiFiClient* client);
-extern void TcpServerInit(void);
-extern void TcpServerProc(void);
+extern int ParseEventFrameStream(CircularBuffer<char,1024>* client);
+extern void UdpServerInit(void);
+extern void UdpServerProc(void);
 extern void WifiConnectionInit(void);
 extern void LcdInit(void);
 

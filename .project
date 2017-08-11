@@ -42,6 +42,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp8266/hardware/esp8266/2.3.0/variants/nodemcu</locationURI>
 		</link>
 		<link>
+			<name>libraries/CircularBuffer-master</name>
+			<type>2</type>
+			<location>/Users/yuansmac/Documents/Arduino/libraries/CircularBuffer-master</location>
+		</link>
+		<link>
 			<name>libraries/DNSServer</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp8266/hardware/esp8266/2.3.0/libraries/DNSServer</locationURI>

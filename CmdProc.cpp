@@ -94,44 +94,66 @@ void Protocol_Process(unsigned char* Buf) {
 	}
 }
 
-void ParseEventFrameStream(WiFiClient* client) {
+int ParseEventFrameStream(CircularBuffer<char,1024>* client){
 	uint8_t streamByte;
 	static uint8_t cmdLen=0;
 
 	switch (frameParseStatus) {
 	case FRAME_PARSER_STATUS_IDLE: {
-		if (client->available()) {
-			streamByte = client->read();
+		if (client->size()) {
+			streamByte = client->shift();
 			if (streamByte == ((uint8_t) (0xFF & EVENT_FRAME_FLAG))) {
 				frameParseStatus = FRAME_PARSER_STATUS_SOF_LO;
 			}
 		}
+		else
+		{
+			return 1;
+		}
 	}
 		break;
 	case FRAME_PARSER_STATUS_SOF_LO: {
-		if (client->available()) {
-			streamByte = client->read();
+		if (client->size()) {
+			streamByte = client->shift();
 			if (streamByte == ((uint8_t) (0xFF & (EVENT_FRAME_FLAG >> 8)))) {
 				frameParseStatus = FRAME_PARSER_STATUS_SOF_HI;
 			}
+			else
+			{
+				return 1;
+			}
+
 		}
 	}
 		break;
 	case FRAME_PARSER_STATUS_SOF_HI: {
-		if (client->available()) {
-			streamByte = client->read();
+		if (client->size()) {
+			streamByte = client->shift();
+
 				cmdLen=streamByte;
 				frameParseStatus = FRAME_PARSER_STATUS_RECV_CMD_LEN;
+		}
+		else
+		{
+			return 1;
 		}
 	}
 		break;
 
 	case FRAME_PARSER_STATUS_RECV_CMD_LEN: {
-		if (client->available() >= cmdLen) {
-			client->read(cmdBuf, cmdLen);
+		if (client->size() >= cmdLen) {
+			for(int i=0;i<cmdLen;i++){
+				cmdBuf[i]=client->shift();
+			}
+			//client->read(cmdBuf, cmdLen);
 			Protocol_Process(cmdBuf);
 			frameParseStatus = FRAME_PARSER_STATUS_IDLE;
 			cmdLen=0;
+			return 1;
+		}
+		else
+		{
+			return 1;
 		}
 	}
 		break;
@@ -139,4 +161,5 @@ void ParseEventFrameStream(WiFiClient* client) {
 	default:
 		break;
 	}
+	return 0;
 }
