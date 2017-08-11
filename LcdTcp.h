@@ -9,10 +9,12 @@
 #include "Arduino.h"
 //add your includes for the project wifi here
 #include <ESP8266WiFi.h>
+#include <ESP8266mDNS.h>
 #include <DNSServer.h>
 #include "WiFiManager.h"          //https://github.com/tzapu/WiFiManager
 #include <Wire.h>
 #include "LCD_I2C.h"
+#include "LiquidCrystal_I2C.h"
 
 
 //end of add your includes here
@@ -24,8 +26,10 @@
 extern void ParseEventFrameStream(WiFiClient* client);
 extern void TcpServerInit(void);
 extern void TcpServerProc(void);
-extern void WifiConnectionIniit(void);
+extern void WifiConnectionInit(void);
 extern void LcdInit(void);
+
+extern LiquidCrystal_I2C lcd;
 
 
 //Do not add code below this line

@@ -29,15 +29,23 @@ void Protocol_Process(unsigned char* Buf) {
 
 	switch (Buf[0]) {
 	case CMD_LCD_INIT:
-
-		//lcd_init(Buf[1], Buf[2]);
-		lcd_init();
+		lcd = LiquidCrystal_I2C(0x3F,Buf[1],Buf[2],LCD_5x8DOTS);
+		lcd.begin();
+		lcd.clear();
 		Serial.printf("CMD_LCD_INIT.X=%d,Y=%d\n",Buf[1], Buf[2]);
 
 		break;
 
 	case CMD_LCD_SETBACKLGIHT:
 		Serial.printf("CMD_LCD_SETBACKLGIHT.Level=%d\n",Buf[1]);
+		if(Buf[1])
+		{
+			lcd.backlight();
+		}
+		else
+		{
+			lcd.noBacklight();
+		}
 
 		break;
 
@@ -53,7 +61,7 @@ void Protocol_Process(unsigned char* Buf) {
 
 	case CMD_LCD_WRITEDATA:
 		for (i = 0; i < Buf[1]; i++) {
-			lcd_putchar(Buf[2 + i]);
+			lcd.write(Buf[2 + i]);
 			Serial.write(Buf[2 + i]);
 
 		}
@@ -64,25 +72,14 @@ void Protocol_Process(unsigned char* Buf) {
 
 	case CMD_LCD_SETCURSOR:
 		Serial.printf("CMD_LCD_SETCURSOR.X=%d,Y=%d\n",Buf[1], Buf[2]);
-		set_cursor(Buf[1], Buf[2]);
+		//set_cursor(Buf[1], Buf[2]);
+		lcd.setCursor(Buf[1], Buf[2]);
 
 		break;
 
 	case CMD_LCD_CUSTOMCHAR:
 		Serial.println("CMD_LCD_CUSTOMCHAR.");
-//		if (Is_Daul) {
-//			CurrentPanel = 1;
-//			lcd_write_cmd(0x40 | 8 * Buf[1]);
-//
-//			for (i = 0; i < 8; i++)
-//				lcd_putchar(Buf[2 + i]);
-//		}
-//		CurrentPanel = 0;
-		lcd_write_cmd(0x40 | 8 * Buf[1]);
-
-		for (i = 0; i < 8; i++)
-			lcd_putchar(Buf[2 + i]);
-
+		lcd.createChar(Buf[1],&Buf[2]);
 		break;
 
 	case CMD_LCD_WRITECMD:

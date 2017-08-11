@@ -57,6 +57,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp8266/hardware/esp8266/2.3.0/libraries/ESP8266WiFi</locationURI>
 		</link>
 		<link>
+			<name>libraries/ESP8266mDNS</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/esp8266/hardware/esp8266/2.3.0/libraries/ESP8266mDNS</locationURI>
+		</link>
+		<link>
 			<name>libraries/WiFiManager</name>
 			<type>2</type>
 			<location>/Users/yuansmac/Documents/Arduino/libraries/WiFiManager</location>

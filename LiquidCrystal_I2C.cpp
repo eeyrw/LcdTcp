@@ -23,6 +23,7 @@ _useEnable2 = false;
 
 void LiquidCrystal_I2C::begin() {
 Wire.begin();
+Wire.setClock(400000);
 _displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
 if (_rows > 1) {
@@ -225,11 +226,26 @@ command(LCD_ENTRYMODESET | _displaymode);
 // Allows us to fill the first 8 CGRAM locations
 // with custom characters
 void LiquidCrystal_I2C::createChar(uint8_t location, uint8_t charmap[]) {
-location &= 0x7; // we only have 8 locations 0-7
-command(LCD_SETCGRAMADDR | (location << 3));
-for (int i=0; i<8; i++) {
-write(charmap[i]);
-}
+
+	location &= 0x7; // we only have 8 locations 0-7
+	if (_useTwoChips) {
+		_useEnable2 = false;
+		command(LCD_SETCGRAMADDR | (location << 3));
+		for (int i=0; i<8; i++) {
+		write(charmap[i]);
+		}
+
+		_useEnable2 = true;
+		command(LCD_SETCGRAMADDR | (location << 3));
+		for (int i=0; i<8; i++) {
+		write(charmap[i]);
+		}
+	} else {
+		command(LCD_SETCGRAMADDR | (location << 3));
+		for (int i=0; i<8; i++) {
+		write(charmap[i]);
+		}
+	}
 }
 
 // Turn the (optional) backlight off/on

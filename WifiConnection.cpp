@@ -16,7 +16,7 @@ void configModeCallback (WiFiManager *myWiFiManager) {
 }
 
 
-void WifiConnectionIniit(void)
+void WifiConnectionInit(void)
 {
 	  //WiFiManager
 	  //Local intialization. Once its business is done, there is no need to keep it around
@@ -40,6 +40,8 @@ void WifiConnectionIniit(void)
 
 	  //if you get here you have connected to the WiFi
 	  Serial.println("connected...yeey :)");
+	  lcd.setCursor(0,1);
+	  lcd.print(WiFi.localIP());
 }
 
 
