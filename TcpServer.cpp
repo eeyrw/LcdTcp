@@ -4,47 +4,54 @@
 #define MAX_SRV_CLIENTS 1
 #define SRV_PORT 2400
 
-
 WiFiServer server(SRV_PORT);
 WiFiClient serverClients[MAX_SRV_CLIENTS];
-
 
 void TcpServerInit(void)
 {
 	Serial.println("TCP SERVER BEGIN WITH:");
-	  server.begin();
-	  server.setNoDelay(true);
-	  Serial.print("IP:");
-	  Serial.println(WiFi.localIP());
+	server.begin();
+	server.setNoDelay(true);
+	Serial.print("IP:");
+	Serial.println(WiFi.localIP());
 }
 
 void TcpServerProc(void)
 {
-	 uint8_t i;
-	  //check if there are any new clients
-	  if (server.hasClient()){
-	    for(i = 0; i < MAX_SRV_CLIENTS; i++){
-	      //find free/disconnected spot
-	      if (!serverClients[i] || !serverClients[i].connected()){
-	        if(serverClients[i]) serverClients[i].stop();
-	        serverClients[i] = server.available();
-	        Serial.print("New client Id:"); Serial.print(i);Serial.println("");
-	        continue;
-	      }
-	    }
-	    //no free/disconnected spot so reject
-	    WiFiClient serverClient = server.available();
-	    serverClient.stop();
-	  }
-	  //check clients for data
-	  for(i = 0; i < MAX_SRV_CLIENTS; i++){
-	    if (serverClients[i] && serverClients[i].connected()){
-	      if(serverClients[i].available()){
-	    	  ParseEventFrameStream(&serverClients[i]);
-	      }
-	    }
-	  }
-	  //check UART for data
+	uint8_t i;
+	//check if there are any new clients
+	if (server.hasClient())
+	{
+		for (i = 0; i < MAX_SRV_CLIENTS; i++)
+		{
+			//find free/disconnected spot
+			if (!serverClients[i] || !serverClients[i].connected())
+			{
+				if (serverClients[i])
+					serverClients[i].stop();
+				serverClients[i] = server.available();
+				Serial.print("New client Id:");
+				Serial.print(i);
+				Serial.println("");
+				continue;
+			}
+		}
+		//no free/disconnected spot so reject
+		WiFiClient serverClient = server.available();
+		serverClient.stop();
+	}
+	//check clients for data
+	for (i = 0; i < MAX_SRV_CLIENTS; i++)
+	{
+		if (serverClients[i] && serverClients[i].connected())
+		{
+			if (serverClients[i].available())
+			{
+				ParseEventFrameStream(&serverClients[i]);
+			}
+		}
+	}
+	//check UART for data
 	//  if(Serial.available()){
 	//    size_t len = Serial.available();
 	//    uint8_t sbuf[len];
