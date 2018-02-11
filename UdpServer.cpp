@@ -30,8 +30,8 @@ void UdpServerProc(void)
 		  ParseEventFrameStream(&queue);
 	  }
 	  else {
-	    Serial.print("packet received, length=");
-	    Serial.println(cb);
+	    //Serial.print("packet received, length=");
+	    //Serial.println(cb);
 	    // We've received a packet, read the data from it
 
 	    //the timestamp starts at byte 40 of the received packet and is four bytes,

@@ -62,16 +62,16 @@ void Protocol_Process(unsigned char* Buf) {
 	case CMD_LCD_WRITEDATA:
 		for (i = 0; i < Buf[1]; i++) {
 			lcd.write(Buf[2 + i]);
-			Serial.write(Buf[2 + i]);
+			//Serial.write(Buf[2 + i]);
 
 		}
 
-		Serial.println("");
+		//Serial.println("");
 
 		break;
 
 	case CMD_LCD_SETCURSOR:
-		Serial.printf("CMD_LCD_SETCURSOR.X=%d,Y=%d\n",Buf[1], Buf[2]);
+		//Serial.printf("CMD_LCD_SETCURSOR.X=%d,Y=%d\n",Buf[1], Buf[2]);
 		//set_cursor(Buf[1], Buf[2]);
 		lcd.setCursor(Buf[1], Buf[2]);
 
@@ -93,7 +93,17 @@ void Protocol_Process(unsigned char* Buf) {
 
 	}
 }
+unsigned short crc16(const unsigned char* data_p, unsigned char length) {
+	unsigned char x;
+	unsigned short crc = 0xFFFF;
 
+	while (length--) {
+		x = crc >> 8 ^ *data_p++;
+		x ^= x >> 4;
+		crc = (crc << 8) ^ ((unsigned short)(x << 12)) ^ ((unsigned short)(x << 5)) ^ ((unsigned short)x);
+	}
+	return crc;
+}
 int ParseEventFrameStream(CircularBuffer<char,1024>* client){
 	uint8_t streamByte;
 	static uint8_t cmdLen=0;
@@ -146,7 +156,14 @@ int ParseEventFrameStream(CircularBuffer<char,1024>* client){
 				cmdBuf[i]=client->shift();
 			}
 			//client->read(cmdBuf, cmdLen);
-			Protocol_Process(cmdBuf);
+			uint16_t crc=crc16(cmdBuf,cmdLen-2);
+			uint16_t recv_crc=cmdBuf[cmdLen-2]|(cmdBuf[cmdLen-1]<<8);
+			if(crc==recv_crc)
+				Protocol_Process(cmdBuf);
+			else
+				Serial.printf("CRC ERROR\n");
+			
+			
 			frameParseStatus = FRAME_PARSER_STATUS_IDLE;
 			cmdLen=0;
 			return 1;
