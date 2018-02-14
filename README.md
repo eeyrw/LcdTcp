@@ -12,8 +12,8 @@ If you want to compile by yourself, you may do something like this:
 2. Install ESP8266 core ( Check this [link](https://github.com/esp8266/Arduino) about how to do ) .
 3. Install libraries (`CircularBuffer`, `WiFiManager` by inside library manager of Arduino IDE.
 4. Open the LcdTcp.ino with Arduino IDE and specify the board `NodeMCU 1.0 ESP-12E` and other parameters should be set accordingly.
-5. Arduino flow: Verify->C
+5. Arduino flow: Verify->Uploa
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjY0MzQ4NDNdfQ==
+eyJoaXN0b3J5IjpbODA5NzE1MzMzXX0=
 -->
