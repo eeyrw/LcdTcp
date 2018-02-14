@@ -20,7 +20,6 @@ Also, if you are interested in building with [makeEspArduino](https://github.com
 **Upload firmware**
 If you use Arduino IDE, the correct COM port should be set. Then click upload button.
 If you download the bin from release page, you can upload binary through esptool. The following steps should be taken:
-
 6. If you have not python 3, then get it. Because upload tool is written in python.
 7. Run `pip install esptool` .  Setup by yourself is also feasible and check https://github.com/espressif/esptool .
 8. Run `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  
@@ -29,5 +28,5 @@ If you download the bin from release page, you can upload binary through esptool
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxODg2MzgyN119
+eyJoaXN0b3J5IjpbNDg4ODg0NzM1XX0=
 -->
