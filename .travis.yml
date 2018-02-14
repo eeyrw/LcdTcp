@@ -37,7 +37,7 @@ notifications:
     on_failure: change
 
 before_deploy:
-      - zip -r LcdTcpBin.zip \tmp\mkESP\LcdTcp_nodemcuv2\LcdTcp.bin \tmp\mkESP\LcdTcp_nodemcuv2\LcdTcp.elf
+      - zip -r LcdTcpBin.zip /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.bin /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.elf
     
 deploy:
       provider: releases
