@@ -13,7 +13,8 @@ If you want to compile by yourself, you may do something like this:
 3. Install libraries (`CircularBuffer`, `WiFiManager` by inside library manager of Arduino IDE.
 4. Open the LcdTcp.ino with Arduino IDE and specify the board `NodeMCU 1.0 ESP-12E` and other parameters should be set accordingly.
 5. Arduino flow: Verify->Upload.
+Also, if you are in
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1ODM2NzgxM119
+eyJoaXN0b3J5IjpbLTgxNjc3MjU2M119
 -->
