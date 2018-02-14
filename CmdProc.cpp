@@ -12,6 +12,7 @@
 #define CMD_LCD_WRITECMD 0x08
 #define CMD_ECHO 0x09
 #define CMD_GET_VER_INFO 0x0A
+#define CMD_LCD_DE_INIT 0x0B
 #define CMD_ENTER_BOOT 0x19
 
 #define CMD_OFFEST 0x03
@@ -114,7 +115,10 @@ int Protocol_Process(unsigned char *Buf)
 		rbf[1] = sprintf((char *)&rbf[2], "Date: %s, Time: %s, Git: %s, Env: %s", _BuildInfo.date, _BuildInfo.time, _BuildInfo.src_version, _BuildInfo.env_version);
 		retByteNum = rbf[1] + 1 + 1;
 		break;
+	case CMD_LCD_DE_INIT:
+		LcdShowStandby();
 
+		break;
 	case CMD_ENTER_BOOT:
 
 	default:

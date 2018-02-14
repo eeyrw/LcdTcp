@@ -23,6 +23,7 @@ void WifiConnectionInit(void)
 	WiFiManager wifiManager;
 	//reset settings - for testing
 	//wifiManager.resetSettings();
+	LcdShowFetchIP();
 
 	//set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
 	wifiManager.setAPCallback(configModeCallback);
@@ -41,8 +42,5 @@ void WifiConnectionInit(void)
 
 	//if you get here you have connected to the WiFi
 	Serial.println("connected...yeey :)");
-	lcd.setCursor(0, 0);
-	lcd.print("IP acquired.");
-	lcd.setCursor(0, 1);
-	lcd.print(WiFi.localIP());
+	LcdShowStandby();
 }

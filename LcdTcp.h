@@ -29,6 +29,8 @@ extern void TcpServerInit(void);
 extern void TcpServerProc(void);
 extern void WifiConnectionInit(void);
 extern void LcdInit(void);
+extern void LcdShowStandby(void);
+extern void LcdShowFetchIP(void);
 
 extern LiquidCrystal_I2C lcd;
 

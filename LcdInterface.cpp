@@ -12,6 +12,22 @@ void LcdInit(void)
 	lcd.begin();
 	// Print a message to the LCD.
 	lcd.clear();
+
+}
+void LcdShowFetchIP(void)
+{
+	lcd.clear();
 	lcd.setCursor(0, 0);
 	lcd.print("Acquiring IP..");
+}
+
+
+void LcdShowStandby(void)
+{
+	lcd.clear();
+	lcd.setCursor(0, 0);
+	lcd.print("Standby.");
+	lcd.setCursor(0, 1);
+	lcd.print("IP:");
+	lcd.print(WiFi.localIP());
 }
