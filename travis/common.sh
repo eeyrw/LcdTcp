@@ -26,7 +26,5 @@ function build()
       # heavy checkmark
       echo -e "\xe2\x9c\x93"
     fi
-  done
-
   return $exit_code
 }
