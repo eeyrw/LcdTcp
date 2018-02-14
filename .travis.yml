@@ -18,7 +18,7 @@ install:
   - arduino --install-boards esp8266:esp8266
   - arduino --board esp8266:esp8266:generic --save-prefs
   - arduino --pref "compiler.warning_level=all" --save-prefs
-    git clone https://github.com/plerup/makeEspArduino.git $TRAVIS_BUILD_DIR
+  - git clone https://github.com/plerup/makeEspArduino.git $TRAVIS_BUILD_DIR
 script:
   - "echo $PWD"
   - "echo $HOME"
