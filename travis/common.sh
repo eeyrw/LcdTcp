@@ -11,14 +11,13 @@ function build()
     local build_stdout
     build_stdout=$(make -f ./makeEspArduino/makeEspArduino.mk -j8 2>&1)
 
+    echo "----------------------------- BUILD OUTPUT -----------------------------\n"
+    echo "$build_stdout"
+    echo "\n------------------------------------------------------------------------\n"
     # echo output if the build failed
     if [ $? -ne 0 ]; then
       # heavy X
       echo -e "\xe2\x9c\x96"
-      echo -e "----------------------------- DEBUG OUTPUT -----------------------------\n"
-      echo "$build_stdout"
-      echo -e "\n------------------------------------------------------------------------\n"
-
       # mark as fail
       exit_code=1
 

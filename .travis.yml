@@ -35,3 +35,17 @@ notifications:
   email:
     on_success: change
     on_failure: change
+
+before_deploy:
+      - zip -r LcdTcpBin.zip \tmp\mkESP\LcdTcp_nodemcuv2\LcdTcp.bin \tmp\mkESP\LcdTcp_nodemcuv2\LcdTcp.elf
+    
+deploy:
+      provider: releases
+      api_key: $CI_USER_TOKEN
+      skip_cleanup: true
+      file:
+        - LcdTcpBin.zip
+      on:
+        tags: true
+        all_branches: true
+
