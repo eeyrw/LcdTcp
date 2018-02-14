@@ -8,7 +8,7 @@ https://lceda.cn/eeyrw/wifi-lcd
 ## Firmware [![Build Status](https://travis-ci.org/eeyrw/LcdTcp.svg?branch=master)](https://travis-ci.org/eeyrw/LcdTcp)
 The firmware is based on ESP8266 Arduino core and several libraries. Currently the firmware is built by travis-ci and release the binary in the GitHub release page.
 
-**Build firmware in ordinary way**
+**Build firmware**
 
 1. Install Arduino IDE. 
 2. Install ESP8266 core ( Check this [link](https://github.com/esp8266/Arduino) about how to do ) .
@@ -17,9 +17,10 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 5. Click verify button.
 
 Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
-**Build firmware in ordinary way**
+**Upload firmware**
+1. If you have not python 3, then get it. Because 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg3MDMxMTczXX0=
+eyJoaXN0b3J5IjpbLTE4MDk1NDgzMV19
 -->
