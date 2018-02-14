@@ -10,7 +10,11 @@
 #define CMD_LCD_SETCURSOR 0x06
 #define CMD_LCD_CUSTOMCHAR 0x07
 #define CMD_LCD_WRITECMD 0x08
+#define CMD_ECHO 0x09
+#define CMD_GET_VER_INFO 0x0A
 #define CMD_ENTER_BOOT 0x19
+
+#define CMD_OFFEST 0x03
 
 typedef enum _EVENT_FRAME_PARSER_STATUS {
 	FRAME_PARSER_STATUS_IDLE = 0,
@@ -23,10 +27,18 @@ typedef enum _EVENT_FRAME_PARSER_STATUS {
 EVENT_FRAME_PARSER_STATUS frameParseStatus;
 
 uint8_t cmdBuf[256];
+uint8_t cmdRetBuf[256];
 
-void Protocol_Process(unsigned char *Buf)
+uint8_t *GetCmdDataPtr(uint8_t *buffer)
+{
+	return buffer + CMD_OFFEST;
+}
+
+int Protocol_Process(unsigned char *Buf)
 {
 	unsigned int i;
+	int retByteNum = 0;
+	uint8_t *rbf;
 
 	switch (Buf[0])
 	{
@@ -81,7 +93,26 @@ void Protocol_Process(unsigned char *Buf)
 		break;
 
 	case CMD_LCD_WRITECMD:
+		Serial.printf("CMD_LCD_COMMAND: 0x%X.\n", Buf[1]);
+		lcd.command(Buf[1]);
 
+		break;
+
+	case CMD_ECHO:
+		rbf = GetCmdDataPtr(cmdRetBuf);
+		rbf[0] = CMD_ECHO;
+		for (i = 1; i < Buf[1] + 1 + 1; i++)
+		{
+			rbf[i] = Buf[i];
+		}
+		retByteNum = Buf[1] + 1 + 1;
+		break;
+
+	case CMD_GET_VER_INFO:
+		rbf = GetCmdDataPtr(cmdRetBuf);
+		rbf[0] = CMD_GET_VER_INFO;
+		rbf[1] = sprintf((char *)&rbf[2], "Date: %s, Time: %s, Git: %s, Env: %s", _BuildInfo.date, _BuildInfo.time, _BuildInfo.src_version, _BuildInfo.env_version);
+		retByteNum = rbf[1] + 1 + 1;
 		break;
 
 	case CMD_ENTER_BOOT:
@@ -89,6 +120,7 @@ void Protocol_Process(unsigned char *Buf)
 	default:
 		break;
 	}
+	return retByteNum;
 }
 
 void ParseEventFrameStream(WiFiClient *client)
@@ -138,7 +170,16 @@ void ParseEventFrameStream(WiFiClient *client)
 		if (client->available() >= cmdLen)
 		{
 			client->read(cmdBuf, cmdLen);
-			Protocol_Process(cmdBuf);
+			int retByteNum = Protocol_Process(cmdBuf);
+			if (retByteNum > 0)
+			{
+				cmdRetBuf[0] = (uint8_t)(0xFF & EVENT_FRAME_FLAG);
+				cmdRetBuf[1] = (uint8_t)(0xFF & (EVENT_FRAME_FLAG >> 8));
+				cmdRetBuf[2] = retByteNum;
+				retByteNum += 3;
+				client->write(cmdRetBuf, retByteNum);
+			}
+
 			frameParseStatus = FRAME_PARSER_STATUS_IDLE;
 			cmdLen = 0;
 		}
