@@ -10,8 +10,8 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 If you want to compile by yourself, you may do something like this:
 1. Install Arduino IDE. 
 2. Install ESP8266 core ( Check this [link](https://github.com/esp8266/Arduino) about how to do ) .
-3. Install libraries through i
+3. Install libraries through inside 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzMwNTI5MzVdfQ==
+eyJoaXN0b3J5IjpbLTE2MDg0MDU1MzhdfQ==
 -->
