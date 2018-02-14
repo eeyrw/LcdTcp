@@ -18,13 +18,13 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 
 Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
 **Upload firmware**
-6. If you have not python 3, then get it. Because upload tool is written in python.
-7. `pip install esptool` Setup by yourself is also feasible and check https://github.com/espressif/esptool .
-8. `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`
-	Example: 
+1. If you have not python 3, then get it. Because upload tool is written in python.
+2. `pip install esptool` Setup by yourself is also feasible and check https://github.com/espressif/esptool .
+3. `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  Example: 
 
-esptool --port COM7 --baud 1500000 write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
+    esptool --port COM7 --baud 1500000 write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzQyMzM0MTRdfQ==
+eyJoaXN0b3J5IjpbMTM2Mzc3NjA0NV19
 -->
