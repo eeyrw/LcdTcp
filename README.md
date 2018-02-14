@@ -18,9 +18,10 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 
 Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
 **Upload firmware**
-1. If you have not python 3, then get it. Because 
+1. If you have not python 3, then get it. Because upload tool is written in python.
+2. `pip install esptool` Setup by yourslef 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk1NDgzMV19
+eyJoaXN0b3J5IjpbLTIzNzg5MTMwOV19
 -->
