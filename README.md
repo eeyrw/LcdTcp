@@ -17,8 +17,9 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 5. Click verify button.
 
 Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
+**Build firmware in ordinary way**
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc4NTQ3MDRdfQ==
+eyJoaXN0b3J5IjpbODg3MDMxMTczXX0=
 -->
