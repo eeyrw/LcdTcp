@@ -1,51 +1,40 @@
 language: c
 before_install:
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
-  - sleep 3
-  - export DISPLAY=:1.0
-  - wget http://downloads.arduino.cc/arduino-1.8.5-linux64.tar.xz
-  - tar xf arduino-1.8.5-linux64.tar.xz
-  - sudo mv arduino-1.8.5 /usr/local/share/arduino
-  - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile
+  --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
+- sleep 3
+- export DISPLAY=:1.0
+- wget http://downloads.arduino.cc/arduino-1.8.5-linux64.tar.xz
+- tar xf arduino-1.8.5-linux64.tar.xz
+- sudo mv arduino-1.8.5 /usr/local/share/arduino
+- sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 install:
-#  - ln -s $PWD /usr/local/share/arduino/libraries/WiFiManager
-# boards manager not working on 1.6.7 - 1.6.8
-  - arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json" --save-prefs
-# install lib arduino json not working in 1.6.5
-#  - arduino --install-library "ArduinoJson"
-  - git clone https://github.com/tzapu/WiFiManager.git /home/travis/Arduino/libraries/WiFiManager
-  - git clone https://github.com/rlogiacco/CircularBuffer.git /home/travis/Arduino/CircularBuffer
-  - arduino --install-boards esp8266:esp8266
-  - arduino --board esp8266:esp8266:generic --save-prefs
-  - arduino --pref "compiler.warning_level=all" --save-prefs
-  - git clone https://github.com/plerup/makeEspArduino.git $TRAVIS_BUILD_DIR/makeEspArduino
+- arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json"
+  --save-prefs
+- git clone https://github.com/tzapu/WiFiManager.git /home/travis/Arduino/libraries/WiFiManager
+- git clone https://github.com/rlogiacco/CircularBuffer.git /home/travis/Arduino/CircularBuffer
+- arduino --install-boards esp8266:esp8266
+- arduino --board esp8266:esp8266:generic --save-prefs
+- arduino --pref "compiler.warning_level=all" --save-prefs
+- git clone https://github.com/plerup/makeEspArduino.git $TRAVIS_BUILD_DIR/makeEspArduino
 script:
-  - "echo $PWD"
-  - "echo $HOME"
-  - "ls $PWD"
-  - source $TRAVIS_BUILD_DIR/travis/common.sh
-  - build
-#  - "cat $PWD/examples/AutoConnect/AutoConnect.ino"
-#  - arduino -v --verbose-build --verify $PWD/examples/AutoConnect/AutoConnect.ino
-#  - arduino --verify --board arduino:avr:uno $PWD/examples/IncomingCall/IncomingCall.ino
-#  - arduino --verify --board arduino:avr:uno $PWD/examples/AdafruitIO_GPS/AdafruitIO_GPS.ino
+- echo $PWD
+- echo $HOME
+- ls $PWD
+- source $TRAVIS_BUILD_DIR/travis/common.sh
+- build
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
 notifications:
   email:
     on_success: change
     on_failure: change
-
 before_deploy:
-      - zip -r LcdTcpBin.zip /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.bin /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.elf
-    
+- zip -r LcdTcpBin.zip /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.bin /tmp/mkESP/LcdTcp_nodemcuv2/LcdTcp.elf
 deploy:
-      provider: releases
-      api_key: $CI_USER_TOKEN
-      skip_cleanup: true
-      file:
-        - LcdTcpBin.zip
-      on:
-        tags: true
-        all_branches: true
-
+  provider: releases
+  api_key:
+    secure: EyER/b6D3A3sCSpH4//S9QIBb94hEACc8sZpYokcvoAXfOYeUH/dFXIlPzYElr45x4hXp7dJWUERQj+N7eNA9BnnzFz1GgUqXBtqs7PQ4R/kL03VSMqj75x1qTfg7TUeVzIREMGQjMEChFabYMrJRDN4klSgRH9Z5XIsRHIWMir6LIL4Fva3fBHSJbemYtJpb6SsMMjPw3/lyltsr2zwgwNnxsKCWzqlRlClrkybvpub7qKPaLDmsBuLsB+4MrzcqZHC+DckTp08wH4Zyi8MzlqfvH5SakNkM9vPc4taMlIcgvIoOZdGYBHkf6jmcSRypd7H/S0kLOUTrn9m/nr2gqjnTfx46FiQoiuUVxcGXhCZmchi9yGSLrJT4SbZBTLIz0KAEwqyOK3lKCDvCPPs0AaZeTFkBwzIHN/oaIqi4wPJ/9NEvYxW6Tq9MaewCb42NSHxmxy3RNUKi2Cldw+ewCWSSmi7xf+7CyLYgEyVmfbpr0cqy2cyrR1wv2LPmA10PhfAZymc9w4/C3kQhl+h9wrN66quAuKClQnipLb65Awk4Bfs7wDlYDcbesYTBX6BIaRTg1kwdtIOUzWiQKWdhP1B1GsjYz87Ejf6mRJc1m16umkeevBawEFpNYZZGDE96H/EY1HyB1IOSPGTC7bT43HAMtPOde0j7DLXWSJrcCM=
+  file: LcdTcpBin.zip
+  on:
+    repo: eeyrw/LcdTcp
