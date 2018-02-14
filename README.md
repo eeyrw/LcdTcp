@@ -23,8 +23,8 @@ Also, if you are interested in building with [makeEspArduino](https://github.com
 8. `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`
 	Example: 
 
-	    esptool --port COM7 --baud 1500000 write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
+esptool --port COM7 --baud 1500000 write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMzgzNDM4Nl19
+eyJoaXN0b3J5IjpbLTE0NzQyMzM0MTRdfQ==
 -->
