@@ -12,7 +12,7 @@ install:
 - arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json"
   --save-prefs
 - git clone https://github.com/tzapu/WiFiManager.git /home/travis/Arduino/libraries/WiFiManager
-- git clone https://github.com/rlogiacco/CircularBuffer.git /home/travis/Arduino/CircularBuffer
+- git clone https://github.com/rlogiacco/CircularBuffer.git /home/travis/Arduino/libraries/CircularBuffer
 - arduino --install-boards esp8266:esp8266
 - arduino --board esp8266:esp8266:generic --save-prefs
 - arduino --pref "compiler.warning_level=all" --save-prefs
