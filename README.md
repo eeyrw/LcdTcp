@@ -20,9 +20,11 @@ Also, if you are interested in building with [makeEspArduino](https://github.com
 **Upload firmware**
 6. If you have not python 3, then get it. Because upload tool is written in python.
 7. `pip install esptool` Setup by yourself is also feasible and check https://github.com/espressif/esptool .
-8. esptool --port YOUR_COM_PORT --baud YOUR_BAUD write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
+8. `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`
+	Example: 
 
+	    esptool --port COM7 --baud 1500000 write_flash 0x0 f:/Users/yuan/Desktop/LcdTcp.bin
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA0OTIzMDI3XX0=
+eyJoaXN0b3J5IjpbMjEwMzgzNDM4Nl19
 -->
