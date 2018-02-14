@@ -5,7 +5,7 @@ LIBS = $(ESP_LIBS)/SPI \
   $(ESP_LIBS)/ESP8266WiFi \
   $(ESP_LIBS)/ESP8266WebServer \
   $(ESP_LIBS)/DNSServer \
-  $(ESP_LIBS)/DNSServer \
+  $(ESP_LIBS)/ESP8266mDNS \
   $(ARDUINO_LIBS)/WiFiManager \
   $(ARDUINO_LIBS)/CircularBuffer
   
