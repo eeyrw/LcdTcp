@@ -9,9 +9,9 @@ https://lceda.cn/eeyrw/wifi-lcd
 The firmware is based on ESP8266 Arduino core and several libraries. Currently the firmware is built by travis-ci and release the binary in the GitHub release page.
 If you want to compile by yourself, you may do something like this:
 1. Install Arduino IDE. 
-2. Install ESP8266 core
-
+2. Install ESP8266 core ( Check this [link](https://github.com/esp8266/Arduino) about how to do ) .
+3. Install libraries through i
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5OTgzNDQ3NF19
+eyJoaXN0b3J5IjpbLTE0NzMwNTI5MzVdfQ==
 -->
