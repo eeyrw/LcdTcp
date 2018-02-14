@@ -6,9 +6,9 @@ Check the following link, please.
 https://lceda.cn/eeyrw/wifi-lcd
 
 ## Firmware
-The firmware is based on ESP8266 Arduino core and ser
+The firmware is based on ESP8266 Arduino core and several 
 [![Build Status](https://travis-ci.org/eeyrw/LcdTcp.svg?branch=master)](https://travis-ci.org/eeyrw/LcdTcp)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAwMTEyMzA1XX0=
+eyJoaXN0b3J5IjpbLTE5NzczMDgwMTldfQ==
 -->
