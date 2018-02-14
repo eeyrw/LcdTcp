@@ -17,16 +17,16 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 5. Click verify button.
 
 Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
+
 **Upload firmware**
-If you use Arduino IDE, the correct COM port should be set. Then click upload button.
-If you download the bin from release page, you can upload binary through esptool. The following steps can be taken:
-6. If you have not python 3, then get it. Because upload tool is written in python.
-7. Run `pip install esptool` .  Setup by yourself is also feasible and check https://github.com/espressif/esptool .
-8. Run `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  
+If you use Arduino IDE, the correct COM port should be set. Then click upload button. Another scenario you download the bin from release page, you can upload binary through esptool. The following steps can be taken:
+1. If you have not python 3, then get it. Because upload tool is written in python.
+2. Run `pip install esptool` .  Setup by yourself is also feasible and check https://github.com/espressif/esptool .
+3. Run `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4NzgxNTE5Nl19
+eyJoaXN0b3J5IjpbNzg3NzM4NTExXX0=
 -->
