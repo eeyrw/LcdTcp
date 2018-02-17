@@ -22,12 +22,12 @@ Also, if you are interested in building with [makeEspArduino](https://github.com
 
 If you choose Arduino IDE, the correct COM port should be set. After that, click upload button. You can upload binary through esptool in the scenario that you just want to upload bin from release page to ESP8266 . The following steps can be taken:
 1. If you have not python 3, then get it. Because upload tool is written in python.
-2. Run `pip install esptool` .  Setupthis tool manually is also feasible and check https://github.com/espressif/esptool .
+2. Run `pip install esptool` .  Setup this tool manually is also feasible and check https://github.com/espressif/esptool .
 3. Run `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzNzg3MjY3NiwyMDc4Mzg4ODg3XX0=
+eyJoaXN0b3J5IjpbMTE5MjA2MzQ5NCwyMDc4Mzg4ODg3XX0=
 -->
