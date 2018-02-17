@@ -16,7 +16,7 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 4. Open the LcdTcp.ino with Arduino IDE and specify the board `NodeMCU 1.0 ESP-12E` and other parameters should be set accordingly.
 5. Click verify button.
 
-Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root.
+Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root. Generally, you can ra
 
 **Upload firmware**
 
@@ -29,5 +29,5 @@ If you use Arduino IDE, the correct COM port should be set. Then click upload bu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMzQ1MjU4MSwyMDc4Mzg4ODg3XX0=
+eyJoaXN0b3J5IjpbLTIwOTU0MzA2OCwyMDc4Mzg4ODg3XX0=
 -->
