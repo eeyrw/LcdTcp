@@ -6,8 +6,7 @@ LIBS = $(ESP_LIBS)/SPI \
   $(ESP_LIBS)/ESP8266WebServer \
   $(ESP_LIBS)/DNSServer \
   $(ESP_LIBS)/ESP8266mDNS \
-  $(ARDUINO_LIBS)/WiFiManager \
-  $(ARDUINO_LIBS)/CircularBuffer
+  $(ARDUINO_LIBS)/WiFiManager
   
 BOARD = nodemcuv2
 UPLOAD_PORT = COM7
