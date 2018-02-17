@@ -30,5 +30,5 @@ If you use Arduino IDE, the correct COM port should be set. Then click upload bu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3ODM4ODg4Nyw5MzQzMjc1OTddfQ==
+eyJoaXN0b3J5IjpbLTExMjczMTMyODEsMjA3ODM4ODg4N119
 -->
