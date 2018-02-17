@@ -2,7 +2,7 @@
 The wifi text lcd device based on ESP8266. 
 
 ## Hardware
-![enter image description here](https://image.lceda.cn/histories/745bc364bece417490e9830c5354e8d2.png)
+![enter image description here](https://image.lceda.cn/histories/b6f835831acd4fdab739b0abc324c364.png)
 Check the following link :
 https://lceda.cn/eeyrw/wifi-lcd
 
@@ -30,5 +30,5 @@ If you use Arduino IDE, the correct COM port should be set. Then click upload bu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjczMTMyODEsMjA3ODM4ODg4N119
+eyJoaXN0b3J5IjpbLTkwMjQxMTQ5MCwyMDc4Mzg4ODg3XX0=
 -->
