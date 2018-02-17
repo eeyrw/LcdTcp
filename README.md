@@ -12,15 +12,15 @@ The firmware is based on ESP8266 Arduino core and several libraries. Currently t
 
 1. Install Arduino IDE. 
 2. Install ESP8266 core ( Check this [link](https://github.com/esp8266/Arduino) about how to do ) .
-3. Install libraries (`CircularBuffer`, `WiFiManager` by inside library manager of Arduino IDE.
+3. Install libraries (`WiFiManager` by inside library manager of Arduino IDE.
 4. Open the LcdTcp.ino with Arduino IDE and specify the board `NodeMCU 1.0 ESP-12E` and other parameters should be set accordingly.
 5. Click verify button.
 
-Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root. Generally, you can clone the makeEspArduino to the project root and run make -f ./makeEspArduino/makeEspArduino.mk -j7 to 
+Also, if you are interested in building with [makeEspArduino](https://github.com/plerup/makeEspArduino) , you can check the https://github.com/plerup/makeEspArduino and config.mk in the project root. Generally, you can clone the makeEspArduino to the project root and run `make -f ./makeEspArduino/makeEspArduino.mk -j7` to build.
 
 **Upload firmware**
 
-If you use Arduino IDE, the correct COM port should be set. Then click upload button. You can upload binary through esptool in the scenario that you just want to upload bin to ESP8266 from release page. The following steps can be taken:
+If you choose Arduino IDE, the correct COM port should be set. AfteThen click upload button. You can upload binary through esptool in the scenario that you just want to upload bin to ESP8266 from release page. The following steps can be taken:
 1. If you have not python 3, then get it. Because upload tool is written in python.
 2. Run `pip install esptool` .  Setup by yourself is also feasible and check https://github.com/espressif/esptool .
 3. Run `esptool --port YOUR_COM_PORT --baud YOUR_BAUD_RATE write_flash 0x0 BIN_PATH`  
@@ -29,5 +29,5 @@ If you use Arduino IDE, the correct COM port should be set. Then click upload bu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzExMTEwOTQsMjA3ODM4ODg4N119
+eyJoaXN0b3J5IjpbMTU3Mjk5MTk4NywyMDc4Mzg4ODg3XX0=
 -->
