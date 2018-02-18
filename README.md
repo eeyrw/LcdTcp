@@ -5,7 +5,7 @@ The wifi text lcd device based on ESP8266.
 Check the following link :
 https://lceda.cn/eeyrw/wifi-lcd
 
-## Firmware [![Build Status](https://travis-ci.org/eeyrw/LcdTcp.svg?branch=master)](https://travis-ci.org/eeyrw/LcdTcp)
+## Firmware [![Build Status](https://travis-ci.org/eeyrw/LcdTcp.svg?branch=master)](https://travis-ci.org/eeyrw/LcdTcp) [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]() [![GitHub version](https://badge.fury.io/gh/eeyrw%2FLcdTcp.svg)](https://badge.fury.io/gh/eeyrw%2FLcdTcp)
 The firmware is based on ESP8266 Arduino core and several libraries. Currently the firmware is built by travis ci and release the binary in the GitHub release page.
 
 **Build firmware**
@@ -29,5 +29,5 @@ If you choose Arduino IDE, the correct COM port should be set. After that, click
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIyMDc2MzU2LDIwNzgzODg4ODddfQ==
+eyJoaXN0b3J5IjpbLTEzODkyMTYxOTcsMjA3ODM4ODg4N119
 -->
