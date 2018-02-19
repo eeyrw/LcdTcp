@@ -1,0 +1,3 @@
+[submodule "makeEspArduino"]
+	path = makeEspArduino
+	url = ../makeEspArduino.git
