@@ -31,3 +31,6 @@ If you choose Arduino IDE, the correct COM port should be set. After that, click
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTEzODkyMTYxOTcsMjA3ODM4ODg4N119
 -->
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTY3NjA2NDU2Nl19
+-->
