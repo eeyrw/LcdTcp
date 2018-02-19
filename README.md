@@ -1,7 +1,7 @@
 # Wifi2LCD
 The wifi text lcd device based on ESP8266. 
 Check the demo: https://www.youtube.com/watch?v=m8xoZjNyYmA
-or 
+or https://www.bilibili.com/video/av19397782/
 
 ## Hardware
 Check the following link :
@@ -34,5 +34,5 @@ If you choose Arduino IDE, the correct COM port should be set. After that, click
 eyJoaXN0b3J5IjpbLTEzODkyMTYxOTcsMjA3ODM4ODg4N119
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODQxNzY3NzddfQ==
+eyJoaXN0b3J5IjpbLTE5MzQxNjgzMTNdfQ==
 -->
