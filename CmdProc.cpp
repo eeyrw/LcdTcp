@@ -44,7 +44,7 @@ int Protocol_Process(unsigned char *Buf)
 	switch (Buf[0])
 	{
 	case CMD_LCD_INIT:
-		lcd = LiquidCrystal_I2C(0x3F, Buf[1], Buf[2], LCD_5x8DOTS);
+		lcd = LiquidCrystal_I2C(I2C_LCD_ADDR, Buf[1], Buf[2], LCD_5x8DOTS);
 		lcd.begin();
 		lcd.clear();
 		Serial.printf("CMD_LCD_INIT.X=%d,Y=%d\n", Buf[1], Buf[2]);

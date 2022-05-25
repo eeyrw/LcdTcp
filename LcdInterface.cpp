@@ -6,7 +6,7 @@
  */
 
 #include "LcdTcp.h"
-LiquidCrystal_I2C lcd(0x3F, 16, 2, LCD_5x8DOTS);
+LiquidCrystal_I2C lcd(I2C_LCD_ADDR, 16, 2, LCD_5x8DOTS);
 void LcdInit(void)
 {
 	lcd.begin();
