@@ -11,6 +11,7 @@ https://lceda.cn/cocoyuan/wifi-lcd
 The firmware is based on ESP8266 Arduino core and several libraries. Currently the firmware is built by travis ci and release the binary in the GitHub release page.
 
 **Config firmware**
+
 IMPORTANT!!!
 You should config the address of you I2C LCD module at first at the file `I2C_LCD_ADDR_CFG.h`. Otherwise you may encounter the mysterious bug.
 
